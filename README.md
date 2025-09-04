@@ -185,11 +185,5 @@ class ProgramadorCalendario:
 - Reportes avanzados
 - Optimización móvil
 
-### 💰 PRESUPUESTO ESTIMADO
-- **Desarrollo**: 3-4 meses de trabajo
-- **Hosting**: $50-100/mes
-- **Mantenimiento**: 20% del desarrollo inicial/anual
-
 Este sistema transformaría completamente la gestión de la liga, proporcionando herramientas profesionales similares a las usadas en ligas mayores, pero adaptadas al contexto local de la Liga Risaraldense de Softbol.
 
-¿Te gustaría que profundice en algún aspecto específico del sistema?
