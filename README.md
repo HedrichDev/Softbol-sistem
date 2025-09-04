@@ -1,5 +1,5 @@
 # 🚀 Sistema de Estadísticas de Softbol 
-## 📊 SISTEMA DE LIGA RISARALDENSE 
+## 📊 LIGA RISARALDENSE 
 
 ### 🎯 PROPÓSITO DEL SISTEMA
 Sistema de estadísticas para torneos de softball que registra:
