@@ -102,7 +102,7 @@ Sistema de estadísticas para torneos de softball que registra:
 - **Configuración** de temporadas
 - **Exportación** de datos
 
-### 🔧 TECNOLOGÍAS RECOMENDADAS
+### 🔧 TECNOLOGÍAS 
 
 #### BACKEND:
 - **Python** con Flask/Django
