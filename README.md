@@ -8,7 +8,7 @@ Sistema de estadísticas para torneos de softball que registra:
 - **Calendario de partidos** y programación
 - **Rankings** de mejores jugadores en diferentes categorías
 
-### 📋 ESTRUCTURA DE DATOS IDENTIFICADA
+### 📋 ESTRUCTURA DE DATOS 
 
 #### 1. **ESTADÍSTICAS DE JUGADORES**
 - **VB**: Veces al bate
