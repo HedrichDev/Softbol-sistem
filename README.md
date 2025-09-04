@@ -1,6 +1,24 @@
 # 🚀 Sistema de Estadísticas de Softbol 
 ## 📊 LIGA RISARALDENSE 
 
+¡Bienvenidos a la revolución digital del softball risaraldense!
+
+HedrichDev se complace en presentar una solución tecnológica integral diseñada específicamente para elevar la gestión de las estadísticas de la Liga Risaraldense de Softbol a estándares profesionales.
+
+Este sistema no es solo una herramienta de registro, sino un ecosistema inteligente que transformará la manera en que se capturan, analizan y aprovechan los datos deportivos. Imagine tener acceso instantáneo a:
+
+    📊 Estadísticas en tiempo real con cálculos automáticos de averages, ERA y porcentajes de victoria
+
+    👥 Gestión centralizada de jugadores, equipos y temporadas
+
+    🏆 Rankings automáticos que reconocen el rendimiento excepcional
+
+    📱 Acceso móvil desde cualquier dispositivo, en cualquier momento (futuro)
+
+    💾 Protección de datos con respaldos automáticos y almacenamiento persistente
+
+ El diseño de esta plataforma con pasión por el deporte y expertise tecnológico, creando un sistema que honra la tradición del softball mientras embrace la innovación digital.
+
 ### 🎯 PROPÓSITO DEL SISTEMA
 Sistema de estadísticas para torneos de softball que registra:
 - **Rendimiento individual** de jugadores
