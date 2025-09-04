@@ -60,47 +60,6 @@ Sistema de estadísticas para torneos de softball que registra:
 - **Dificultad para actualizar** información en tiempo real
 - **Limitaciones** en análisis avanzado
 
-## 🛠️ PROPUESTA DE SISTEMA AUTOMATIZADO
-
-### 📱 MÓDULOS PRINCIPALES
-
-#### 1. **MÓDULO DE REGISTRO DE PARTIDOS**
-```python
-class Partido:
-    fecha: datetime
-    equipo_local: str
-    equipo_visitante: str
-    resultado: str
-    estadisticas_jugadores: list
-    eventos: list
-```
-
-#### 2. **MÓDULO DE ESTADÍSTICAS**
-```python
-class EstadisticasJugador:
-    def calcular_promedio_bateo(self):
-        return self.hits / self.veces_al_bate if self.veces_al_bate > 0 else 0
-    
-    def calcular_ops(self):
-        # On-base plus slugging
-        return (self.on_base_percentage + self.slugging_percentage)
-```
-
-#### 3. **MÓDULO DE CLASIFICACIÓN**
-```python
-class ClasificacionEquipo:
-    def actualizar_clasificacion(self, resultado_partido):
-        self.juegos_jugados += 1
-        # Lógica de actualización automática
-```
-
-#### 4. **MÓDULO DE CALENDARIO**
-```python
-class ProgramadorCalendario:
-    def generar_calendario_automatico(self, equipos, fechas_disponibles):
-        # Algoritmo de programación equilibrada
-```
-
 ### 🗄️ ESTRUCTURA DE BASE DE DATOS
 
 #### TABLAS PRINCIPALES:
@@ -226,7 +185,46 @@ El sistema de estadísticas de softball debe gestionar de manera completa la inf
 Este sistema transformaría completamente la gestión de la liga, proporcionando herramientas profesionales similares a las usadas en ligas mayores, pero adaptadas al contexto local de la Liga Risaraldense de Softbol.
 
 
-## 🗄️ Modelos de Base de Datos Ampliados
+## 🛠️ PROPUESTA DE SISTEMA AUTOMATIZADO
+
+### 📱 MÓDULOS PRINCIPALES
+
+#### 1. **MÓDULO DE REGISTRO DE PARTIDOS**
+```python
+class Partido:
+    fecha: datetime
+    equipo_local: str
+    equipo_visitante: str
+    resultado: str
+    estadisticas_jugadores: list
+    eventos: list
+```
+
+#### 2. **MÓDULO DE ESTADÍSTICAS**
+```python
+class EstadisticasJugador:
+    def calcular_promedio_bateo(self):
+        return self.hits / self.veces_al_bate if self.veces_al_bate > 0 else 0
+    
+    def calcular_ops(self):
+        # On-base plus slugging
+        return (self.on_base_percentage + self.slugging_percentage)
+```
+
+#### 3. **MÓDULO DE CLASIFICACIÓN**
+```python
+class ClasificacionEquipo:
+    def actualizar_clasificacion(self, resultado_partido):
+        self.juegos_jugados += 1
+        # Lógica de actualización automática
+```
+
+#### 4. **MÓDULO DE CALENDARIO**
+```python
+class ProgramadorCalendario:
+    def generar_calendario_automatico(self, equipos, fechas_disponibles):
+        # Algoritmo de programación equilibrada
+```
 
 ### 1. Modelo de Jugador con Foto y Estadísticas
 
