@@ -165,6 +165,173 @@ El sistema de estadísticas de softball debe gestionar de manera completa la inf
 - **Guardado Automático**: Persistencia inmediata de datos
 - **Recuperación de Datos**: Mecanismos para prevenir pérdida de información
 
+
+# 📊 SISTEMA DE CÁLCULO DETALLADO DE LAS ESTADÍSTICAS
+
+## 🔢 1. ESTADÍSTICAS DE JUGADORES (BATEADORES)
+
+### **AVG - Promedio de Bateo**
+**Fórmula:** `AVG = HC / VB`
+
+- **Cómo sube:** Cuando el jugador conecta hits (HC aumenta)
+- **Cómo baja:** Cuando el jugador hace out sin conectar hit (VB aumenta pero HC no)
+- **Puntos clave:**
+  - Solo se cuenta como VB cuando el bateador completa su turno al bate (no incluye bases por bolas, sacrificios ni interferencias)
+  - Un hit (HC) siempre mejora el promedio
+  - Un out empeora el promedio porque aumenta VB sin aumentar HC
+  - Es un ratio que muestra la frecuencia con que el jugador conecta hits
+
+### **Componentes del AVG:**
+
+**VB (Veces al bate):**
+- Se cuenta cada vez que el bateador completa su turno al bate
+- No se incluyen: bases por bolas, sacrificios, golpeado por lanzamiento, interferencia del catcher
+
+**HC (Hits conectados):**
+- Se cuenta cuando el bateador llega a base por un hit válido
+- Incluye: singles, dobles, triples y home runs
+
+**2B (Dobles):** Hits que permiten llegar a segunda base
+**3B (Triples):** Hits que permiten llegar a tercera base  
+**HR (Home runs):** Hits que permiten recorrer todas las bases y anotar
+
+**BB (Bases por bolas):**
+- Lanzamientos fuera de la zona de strike que resultan en base
+- No afecta el VB ni el AVG
+
+**K (Ponches):**
+- Cuando el bateador acumula 3 strikes
+- Cuenta como VB y out → baja el AVG
+
+**CA (Carreras anotadas):**
+- Veces que el jugador cruza el home plate y anota
+
+**CI (Carreras impulsadas):**
+- Carreras anotadas como resultado directo de la acción del bateador
+- Se cuenta cuando un hit, out de sacrificio o base por bolas permite anotar a un corredor
+
+**SF (Sacrificios):**
+- Outs intencionales que avanzan corredores
+- No cuenta como VB → no afecta el AVG
+
+---
+
+## 🎯 2. ESTADÍSTICAS DE PITCHERS (LANZADORES)
+
+### **PJG (Juegos ganados) / PJP (Juegos perdidos)**
+- **PJG:** Se acredita al pitcher que estaba en el montículo cuando su equipo tomó la ventaja que nunca perdió
+- **PJP:** Se acredita al pitcher que permitió la carrera que dio la ventaja al equipo contrario
+
+### **KP (Ponches propinados)**
+- Número de bateadores que ponchó (3 strikes)
+
+### **BBP (Bases por bolas propinadas)**
+- Lanzamientos fuera de la zona de strike que otorgan base al bateador
+
+### **CP (Carreras permitidas)**
+- Todas las carreras anotadas mientras el pitcher estaba en el juego
+
+### **IL (Hits permitidos)**
+- Todos los hits conectados mientras el pitcher estaba en el juego
+
+### **HP (Carreras earned - Limpias)**
+**Fórmula:** `HP = CP - Carreras no merecidas`
+- Carreras que son responsabilidad directa del pitcher
+- No incluye carreras que anotaron por errores defensivos
+
+---
+
+## 📈 3. ESTADÍSTICAS DE EQUIPOS
+
+### **JJ (Juegos jugados)**
+- Total de partidos disputados: `JJ = JG + JP + JE`
+
+### **JG (Juegos ganados)**
+- Partidos donde el equipo anotó más carreras
+
+### **JP (Juegos perdidos)**
+- Partidos donde el equipo anotó menos carreras
+
+### **JE (Juegos empatados)**
+- Partidos suspendidos o terminados con igual score
+
+### **AVG (Porcentaje de victorias)**
+**Fórmula:** `AVG = JG / (JG + JP)`
+- Si JE > 0, no se consideran los empates en el cálculo
+- Muestra el rendimiento global del equipo
+
+### **CA (Carreras anotadas)**
+- Total de carreras anotadas por el equipo en toda la temporada
+
+### **CC (Carreras permitidas)**
+- Total de carreras permitidas por el equipo en toda la temporada
+
+---
+
+## 🏆 4. SISTEMA DE RANKINGS
+
+### **Top 10 Mejores Bateadores**
+**Criterio:** Mayor AVG (con mínimo de 12 VB por temporada)
+- Se ordena por promedio de bateo de mayor a menor
+- Requisito mínimo de apariciones para evitar distorsiones
+
+### **Top 3 Mejores Pitchers**
+**Criterio:** Mayor cantidad de JG (juegos ganados)
+- En caso de empate, se considera menor PJP (juegos perdidos)
+- Segundo criterio: menor HP (carreras limpias permitidas)
+
+### **Top 5 en Carreras Impulsadas (CI)**
+- Jugadores con mayor cantidad de carreras impulsadas
+- Mide la efectividad para producir carreras
+
+### **Top 5 en Dobles (2B)**
+- Jugadores con mayor cantidad de hits de dos bases
+- Mide la potencia de bateo para hits largos
+
+### **Top 5 en Home Runs (HR)**
+- Jugadores con mayor cantidad de cuadrangulares
+- Mide la máxima potencia de bateo
+
+### **Top 5 Pitchers con más Ponches (KP)**
+- Lanzadores con mayor cantidad de ponches propinados
+- Mide la efectividad para dominar bateadores
+
+---
+
+## ⚙️ 5. SISTEMA DE CÁLCULO AUTOMÁTICO
+
+### **Actualización en Tiempo Real**
+- Cada acción en el juego actualiza inmediatamente las estadísticas
+- El sistema recalcula automáticamente todos los promedios y rankings
+
+### **Cálculo de Promedios**
+- **AVG:** Se recalcula después de cada turno al bate
+- **Porcentaje de victorias:** Se actualiza después de cada juego
+- **ERA (para pitchers):** `(HP × 9) / Entradas lanzadas`
+
+### **Lógica de Afectación**
+- **Un hit:** ↑ HC, ↑ AVG
+- **Un out por ponche:** ↑ VB, ↑ K, ↓ AVG  
+- **Un out de fildeo:** ↑ VB, ↓ AVG
+- **Base por bolas:** ↑ BB, no afecta VB ni AVG
+- **Sacrificio:** ↑ SF, no afecta VB ni AVG
+- **Carrera anotada:** ↑ CA
+- **Carrera impulsada:** ↑ CI
+
+### **Validaciones del Sistema**
+- Mínimo de apariciones para rankings (evita estadísticas irrelevantes)
+- Verificación de consistencia entre estadísticas relacionadas
+- Prevención de datos duplicados o inconsistentes
+- Historial de cambios para auditoría
+
+### **Estadísticas Avanzadas (No en el Excel pero importantes)**
+- **OBP (Porcentaje de embasarse):** `(HC + BB + HBP) / (VB + BB + HBP + SF)`
+- **SLG (Porcentaje de slugging):** `(Sencillos + 2B×2 + 3B×3 + HR×4) / VB`
+- **OPS (Suma de OBP + SLG):** Mide la efectividad total del bateador
+
+Este sistema garantiza que todas las estadísticas se calculen de manera consistente, precisa y automática, proporcionando información confiable para jugadores, entrenadores y aficionados.
+
+
 ## 🚀 PLAN DE IMPLEMENTACIÓN
 
 #### FASE 1 (2-3 semanas):
